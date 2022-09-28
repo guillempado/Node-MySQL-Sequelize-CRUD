@@ -1,6 +1,7 @@
 const mysql = require("mysql2");
 const Sequelize = require("sequelize");
 const config = require("../config");
+const db = require("../db");
 
 const {
     host,
@@ -28,7 +29,7 @@ module.exports = new Promise(async (resolve, reject) => {
         connection.end();
 
         // construeix sequelize object
-        const sequelize = new Sequelize(database, user, password, {
+        db.sequelize = new Sequelize(database, user, password, {
                 dialect: 'mysql',
                 host,
                 port,
@@ -41,7 +42,7 @@ module.exports = new Promise(async (resolve, reject) => {
             }
         )
 
-        resolve(sequelize);
+        resolve();
 
     } catch (error) {
         reject(error);

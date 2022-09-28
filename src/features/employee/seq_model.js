@@ -1,9 +1,7 @@
-
 const { DataTypes } = require("sequelize");
+const db = require('../../db/db.js');
 
-module.exports = sequelize => {
-    // Registra model
-    return sequelize.define("Employee", {
+module.exports = db.sequelize.define("Employee", {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -27,4 +25,4 @@ module.exports = sequelize => {
             allowNull: false,
         },
     });
-}
+
